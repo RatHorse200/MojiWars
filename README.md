@@ -1,51 +1,62 @@
 ## ゲームについて
-ゲームタイトル「もじうぉーず」  
-2025年度　東京理科大学　RICORAプログラミングサークル　理大祭展示作品  
-C++のライブラリであるraylibを使用した2D見下ろし型タワーディフェンスゲーム  
+ゲームタイトル「もじうぉーず」
+2025年度　東京理科大学　RICORAプログラミングサークル　理大祭展示作品
+C++のライブラリであるraylibを使用した2D見下ろし型タワーディフェンスゲーム
+
+## スクリーンショット
+
+![スクリーンショット1](assets/1.png)
+![スクリーンショット2](assets/2.png)
+![スクリーンショット3](assets/3.png)
+
+## デモプレイ
+
+[![デモプレイ動画](https://img.youtube.com/vi/NdsWEiACGhM/0.jpg)](https://www.youtube.com/watch?v=NdsWEiACGhM)
 
 ## 動作環境
 対応機種：PC（Windows上のWSL2 / Linux）  
 ゲーム画面：1216×896  
 （補足：プレイする際はペンとメモ用紙を用意することを推奨します）  
 
-## 仕様素材
-使用したSE：効果音ラボ  
-使用したBGM：魔王魂  
+## 使用素材
+使用したSE：効果音ラボ
+使用したBGM：魔王魂
 
-## ビルド方法
+## 実行方法
 
-### 必要環境
+### パターン1：Windows向け配布版（推奨）
+
+配布用ZIPファイル（`MojiWars_win.zip`）を入手して、以下の手順で実行します。
+
+**必要環境：** Windows（WSL2不要）
+
+1. `MojiWars.zip` を任意のフォルダに展開する
+2. `MojiWars/MojiWars.exe` をダブルクリックして起動する
+
+---
+
+### パターン2：GitHubから実行（WSL2 / Linux）
+
+**必要環境：**
 - Linux または Windows（WSL2）
-- g++（C++17対応）
-- make
-- raylib 4.x系
+- raylib 6.x系
 
-### raylibのインストール（Ubuntu / WSL2）
+**raylibのインストール（Ubuntu / WSL2）：**
 ```bash
 sudo apt update
 sudo apt install libraylib-dev
 ```
 
-バージョンが古い場合は [raylib 公式](https://github.com/raysan5/raylib/releases) からソースをビルドしてください。  
+バージョンが古い（6.x未満）場合は [raylib 公式](https://github.com/raysan5/raylib/releases) からソースをビルドしてください。
 
-### ビルドと起動
-```bash
-git clone https://github.com/RatHorse200/MojiWars.git
-cd MojiWars
-make
-./game
-```
-
-## 実行方法（ビルド済みバイナリを使う場合）
-
-リポジトリにLinux用のビルド済みバイナリ `game` が含まれています。
-raylibがインストールされているWSL2 / Linux環境であれば、ビルドなしで直接実行できます。
-
+**実行手順：**
 ```bash
 git clone https://github.com/RatHorse200/MojiWars.git
 cd MojiWars
 ./game
 ```
+
+> **注意：** 現在、GitHubリポジトリ版では音楽（BGM・SE）が正常に再生されないバグがあります。
 
 ## ディレクトリファイルの階層構造
 
@@ -66,7 +77,11 @@ Game/
 │   │   └── ...
 │   ├── char_fire.txt     # どの文字がどの位置から弾を発射するかをまとめたテキストファイル(char_fire.cppのプログラムで作成)
 │   ├── char_scale.txt    # どの文字がどれくらいのスケールで伸び縮みや縮小しているかをまとめたテキストファイル(char_scale.cppのプログラムで作成)
-│   └── tutorial.txt  　　# チュートリアルの文章が全文書かれてある
+│   ├── tutorial.txt      # チュートリアルの文章が全文書かれてある
+│   ├── 1.png             # スクリーンショット1
+│   ├── 2.png             # スクリーンショット2
+│   ├── 3.png             # スクリーンショット3
+│   └── demo.mp4          # デモプレイ動画
 ├── audio.cpp
 ├── audio.h
 ├── board.cpp
