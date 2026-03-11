@@ -36,8 +36,14 @@ make
 ./game
 ```
 
-## 実行方法
+## 実行方法（ビルド済みバイナリを使う場合）
+
+リポジトリにLinux用のビルド済みバイナリ `game` が含まれています。
+raylibがインストールされているWSL2 / Linux環境であれば、ビルドなしで直接実行できます。
+
 ```bash
+git clone https://github.com/RatHorse200/MojiWars.git
+cd MojiWars
 ./game
 ```
 
