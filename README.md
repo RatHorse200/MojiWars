@@ -43,23 +43,24 @@ make
 
 ## ディレクトリファイルの階層構造
 
-Game/  
-├── assets/  
-│   ├── black_ch/         # ゲームプレイ用以外（タイトル画面、チュートリアル画面、敵）の文字スプライト  
-│   │   ├── exclamation.png  
-│   │   ├── ellipsis.png  
-│   │   └── ...  
-│   ├── music/            # ゲームのSEとBGM  
-│   │   ├── maou_bgm_cyber44.ogg  
-│   │   ├── maou_bgm_cyber45.ogg  
-│   │   └── ...  
-│   ├── red_ch/           # ゲームプレイ用ひらがなスプライト  
-│   │   ├── a.png  
-│   │   ├── i.png  
-│   │   └── ...  
-│   ├── char_fire.txt     # どの文字がどの位置から弾を発射するかをまとめたテキストファイル(char_fire.cppのプログラムで作成)  
-│   ├── char_scale.txt    # どの文字がどれくらいのスケールで伸び縮みや縮小しているかをまとめたテキストファイル(char_scale.cppのプログラムで作成)  
-│   └── tutorial.txt  　　# チュートリアルの文章が全文書かれてある  
+```
+Game/
+├── assets/
+│   ├── black_ch/         # ゲームプレイ用以外（タイトル画面、チュートリアル画面、敵）の文字スプライト
+│   │   ├── exclamation.png
+│   │   ├── ellipsis.png
+│   │   └── ...
+│   ├── music/            # ゲームのSEとBGM
+│   │   ├── maou_bgm_cyber44.ogg
+│   │   ├── maou_bgm_cyber45.ogg
+│   │   └── ...
+│   ├── red_ch/           # ゲームプレイ用ひらがなスプライト
+│   │   ├── a.png
+│   │   ├── i.png
+│   │   └── ...
+│   ├── char_fire.txt     # どの文字がどの位置から弾を発射するかをまとめたテキストファイル(char_fire.cppのプログラムで作成)
+│   ├── char_scale.txt    # どの文字がどれくらいのスケールで伸び縮みや縮小しているかをまとめたテキストファイル(char_scale.cppのプログラムで作成)
+│   └── tutorial.txt  　　# チュートリアルの文章が全文書かれてある
 ├── audio.cpp
 ├── audio.h
 ├── board.cpp
@@ -82,186 +83,193 @@ Game/
 ├── tutorial.cpp
 ├── tutorial.h
 └── viewer_editor.cpp
+```
 
-music/  
-├── maou_bgm_cyber44.ogg    # タイトル画面とチュートリアル画面のBGM             
-├── maou_bgm_cyber45.ogg    # ゲームプレイ中のBGM        
-├── ひらめく2.mp3            # ステージクリア時のSE   
-├── 歓声と拍手.mp3           # ゲームクリア時のSE  
-├── 間抜け4.mp3              # ゲームオーバー時のSE  
-├── 決定ボタンを押す2.mp3　　 # 左クリック時のSE  
-└── 決定ボタンを押す50.mp3    # 文字を書いて置く時のSE  
+```
+music/
+├── maou_bgm_cyber44.ogg    # タイトル画面とチュートリアル画面のBGM
+├── maou_bgm_cyber45.ogg    # ゲームプレイ中のBGM
+├── ひらめく2.mp3            # ステージクリア時のSE
+├── 歓声と拍手.mp3           # ゲームクリア時のSE
+├── 間抜け4.mp3              # ゲームオーバー時のSE
+├── 決定ボタンを押す2.mp3　　 # 左クリック時のSE
+└── 決定ボタンを押す50.mp3    # 文字を書いて置く時のSE
+```
 
-assets/black_ch/  
-├── 0.png  
-├── 1.png  
-├── 2.png  
-├── 3.png  
-├── 4.png  
-├── 5.png  
-├── 6.png  
-├── 7.png  
-├── 8.png  
-├── 9.png  
-├── a.png  
-├── arrow_down.png  
-├── ba.png  
-├── be.png  
-├── bi.png  
-├── bo.png  
-├── bu.png  
-├── chi.png  
-├── chouon.png  
-├── da.png  
-├── de.png  
-├── di.png  
-├── do.png  
-├── du.png  
-├── e.png  
-├── ellipsis.png  
-├── exclamation.png  
-├── fu.png  
-├── ga.png  
-├── ge.png  
-├── gi.png  
-├── go.png  
-├── gu.png  
-├── ha.png  
-├── he.png  
-├── hi.png  
-├── hidari.png  
-├── ho.png  
-├── i.png  
-├── ji.png  
-├── ka.png  
-├── ke.png  
-├── ki.png  
-├── ko.png  
-├── ku.png  
-├── ma.png  
-├── me.png  
-├── mi.png  
-├── migi.png  
-├── mo.png  
-├── mu.png  
-├── n.png  
-├── na.png  
-├── ne.png  
-├── ni.png  
-├── no.png  
-├── nu.png  
-├── o.png  
-├── pa.png  
-├── pe.png  
-├── pi.png  
-├── po.png  
-├── pu.png  
-├── ra.png  
-├── re.png  
-├── ri.png  
-├── ro.png  
-├── ru.png  
-├── sa.png  
-├── se.png  
-├── shi.png  
-├── so.png  
-├── su.png  
-├── ta.png  
-├── te.png  
-├── to.png  
-├── tsu.png  
-├── u.png  
-├── wa.png  
-├── wo.png  
-├── xa.png  
-├── xe.png  
-├── xi.png  
-├── xo.png  
-├── xtu.png  
-├── xu.png  
-├── xya.png  
-├── xyo.png  
-├── xyu.png  
-├── ya.png  
-├── yo.png  
-├── yu.png  
-├── za.png  
-├── ze.png  
-├── zo.png  
-└── zu.png  
+```
+assets/black_ch/
+├── 0.png
+├── 1.png
+├── 2.png
+├── 3.png
+├── 4.png
+├── 5.png
+├── 6.png
+├── 7.png
+├── 8.png
+├── 9.png
+├── a.png
+├── arrow_down.png
+├── ba.png
+├── be.png
+├── bi.png
+├── bo.png
+├── bu.png
+├── chi.png
+├── chouon.png
+├── da.png
+├── de.png
+├── di.png
+├── do.png
+├── du.png
+├── e.png
+├── ellipsis.png
+├── exclamation.png
+├── fu.png
+├── ga.png
+├── ge.png
+├── gi.png
+├── go.png
+├── gu.png
+├── ha.png
+├── he.png
+├── hi.png
+├── hidari.png
+├── ho.png
+├── i.png
+├── ji.png
+├── ka.png
+├── ke.png
+├── ki.png
+├── ko.png
+├── ku.png
+├── ma.png
+├── me.png
+├── mi.png
+├── migi.png
+├── mo.png
+├── mu.png
+├── n.png
+├── na.png
+├── ne.png
+├── ni.png
+├── no.png
+├── nu.png
+├── o.png
+├── pa.png
+├── pe.png
+├── pi.png
+├── po.png
+├── pu.png
+├── ra.png
+├── re.png
+├── ri.png
+├── ro.png
+├── ru.png
+├── sa.png
+├── se.png
+├── shi.png
+├── so.png
+├── su.png
+├── ta.png
+├── te.png
+├── to.png
+├── tsu.png
+├── u.png
+├── wa.png
+├── wo.png
+├── xa.png
+├── xe.png
+├── xi.png
+├── xo.png
+├── xtu.png
+├── xu.png
+├── xya.png
+├── xyo.png
+├── xyu.png
+├── ya.png
+├── yo.png
+├── yu.png
+├── za.png
+├── ze.png
+├── zo.png
+└── zu.png
+```
 
-assets/red_ch/  
-├── a.png     # 'a' を入力したとき表示  
-├── ba.png    # 'ba' を入力したとき表示  
-├── be.png    # 'be' を入力したとき表示  
-├── bi.png    # 'bi' を入力したとき表示  
-├── bo.png    # 'bo' を入力したとき表示  
-├── bu.png    # 'bu' を入力したとき表示  
-├── chi.png   # 'chi' または 'ti' を入力したとき表示  
-├── da.png    # 'da' を入力したとき表示  
-├── de.png    # 'de' を入力したとき表示  
-├── di.png    # 'di' を入力したとき表示  
-├── do.png    # 'do' を入力したとき表示  
-├── du.png    # 'du' を入力したとき表示  
-├── e.png     # 'e' を入力したとき表示  
-├── fu.png    # 'fu' または 'hu' を入力したとき表示  
-├── ga.png    # 'ga' を入力したとき表示  
-├── ge.png    # 'ge' を入力したとき表示  
-├── gi.png    # 'gi' を入力したとき表示  
-├── go.png    # 'go' を入力したとき表示  
-├── gu.png    # 'gu' を入力したとき表示  
-├── ha.png    # 'ha' を入力したとき表示  
-├── he.png    # 'he' を入力したとき表示  
-├── hi.png    # 'hi' を入力したとき表示  
-├── ho.png    # 'ho' を入力したとき表示  
-├── i.png     # 'i' を入力したとき表示  
-├── ji.png    # 'ji' または 'zi' を入力したとき表示  
-├── ka.png    # 'ka' を入力したとき表示  
-├── ke.png    # 'ke' を入力したとき表示  
-├── ki.png    # 'ki' を入力したとき表示  
-├── ko.png    # 'ko' を入力したとき表示  
-├── ku.png    # 'ku' を入力したとき表示  
-├── ma.png    # 'ma' を入力したとき表示  
-├── me.png    # 'me' を入力したとき表示  
-├── mi.png    # 'mi' を入力したとき表示  
-├── mo.png    # 'mo' を入力したとき表示  
-├── mu.png    # 'mu' を入力したとき表示  
-├── n.png     # 'nn' を入力したとき表示  
-├── na.png    # 'na' を入力したとき表示  
-├── ne.png    # 'ne' を入力したとき表示  
-├── ni.png    # 'ni' を入力したとき表示  
-├── no.png    # 'no' を入力したとき表示  
-├── nu.png    # 'nu' を入力したとき表示  
-├── o.png     # 'o' を入力したとき表示  
-├── pa.png    # 'pa' を入力したとき表示  
-├── pe.png    # 'pe' を入力したとき表示  
-├── pi.png    # 'pi' を入力したとき表示  
-├── po.png    # 'po' を入力したとき表示  
-├── pu.png    # 'pu' を入力したとき表示  
-├── ra.png    # 'ra' を入力したとき表示  
-├── re.png    # 're' を入力したとき表示  
-├── ri.png    # 'ri' を入力したとき表示  
-├── ro.png    # 'ro' を入力したとき表示  
-├── ru.png    # 'ru' を入力したとき表示  
-├── sa.png    # 'sa' を入力したとき表示  
-├── se.png    # 'se' を入力したとき表示  
-├── shi.png   # 'shi' または 'si' を入力したとき表示  
-├── so.png    # 'so' を入力したとき表示  
-├── su.png    # 'su' を入力したとき表示  
-├── ta.png    # 'ta' を入力したとき表示  
-├── te.png    # 'te' を入力したとき表示  
-├── to.png    # 'to' を入力したとき表示  
-├── tsu.png   # 'tsu' または 'tu' を入力したとき表示  
-├── u.png     # 'u' を入力したとき表示  
-├── wa.png    # 'wa' を入力したとき表示  
-├── wo.png    # 'wo' を入力したとき表示  
-├── ya.png    # 'ya' を入力したとき表示  
-├── yo.png    # 'yo' を入力したとき表示  
-├── yu.png    # 'yu' を入力したとき表示  
-├── za.png    # 'za' を入力したとき表示  
-├── ze.png    # 'ze' を入力したとき表示  
-├── zo.png    # 'zo' を入力したとき表示  
-└── zu.png    # 'zu' を入力したとき表示  
+```
+assets/red_ch/
+├── a.png     # 'a' を入力したとき表示
+├── ba.png    # 'ba' を入力したとき表示
+├── be.png    # 'be' を入力したとき表示
+├── bi.png    # 'bi' を入力したとき表示
+├── bo.png    # 'bo' を入力したとき表示
+├── bu.png    # 'bu' を入力したとき表示
+├── chi.png   # 'chi' または 'ti' を入力したとき表示
+├── da.png    # 'da' を入力したとき表示
+├── de.png    # 'de' を入力したとき表示
+├── di.png    # 'di' を入力したとき表示
+├── do.png    # 'do' を入力したとき表示
+├── du.png    # 'du' を入力したとき表示
+├── e.png     # 'e' を入力したとき表示
+├── fu.png    # 'fu' または 'hu' を入力したとき表示
+├── ga.png    # 'ga' を入力したとき表示
+├── ge.png    # 'ge' を入力したとき表示
+├── gi.png    # 'gi' を入力したとき表示
+├── go.png    # 'go' を入力したとき表示
+├── gu.png    # 'gu' を入力したとき表示
+├── ha.png    # 'ha' を入力したとき表示
+├── he.png    # 'he' を入力したとき表示
+├── hi.png    # 'hi' を入力したとき表示
+├── ho.png    # 'ho' を入力したとき表示
+├── i.png     # 'i' を入力したとき表示
+├── ji.png    # 'ji' または 'zi' を入力したとき表示
+├── ka.png    # 'ka' を入力したとき表示
+├── ke.png    # 'ke' を入力したとき表示
+├── ki.png    # 'ki' を入力したとき表示
+├── ko.png    # 'ko' を入力したとき表示
+├── ku.png    # 'ku' を入力したとき表示
+├── ma.png    # 'ma' を入力したとき表示
+├── me.png    # 'me' を入力したとき表示
+├── mi.png    # 'mi' を入力したとき表示
+├── mo.png    # 'mo' を入力したとき表示
+├── mu.png    # 'mu' を入力したとき表示
+├── n.png     # 'nn' を入力したとき表示
+├── na.png    # 'na' を入力したとき表示
+├── ne.png    # 'ne' を入力したとき表示
+├── ni.png    # 'ni' を入力したとき表示
+├── no.png    # 'no' を入力したとき表示
+├── nu.png    # 'nu' を入力したとき表示
+├── o.png     # 'o' を入力したとき表示
+├── pa.png    # 'pa' を入力したとき表示
+├── pe.png    # 'pe' を入力したとき表示
+├── pi.png    # 'pi' を入力したとき表示
+├── po.png    # 'po' を入力したとき表示
+├── pu.png    # 'pu' を入力したとき表示
+├── ra.png    # 'ra' を入力したとき表示
+├── re.png    # 're' を入力したとき表示
+├── ri.png    # 'ri' を入力したとき表示
+├── ro.png    # 'ro' を入力したとき表示
+├── ru.png    # 'ru' を入力したとき表示
+├── sa.png    # 'sa' を入力したとき表示
+├── se.png    # 'se' を入力したとき表示
+├── shi.png   # 'shi' または 'si' を入力したとき表示
+├── so.png    # 'so' を入力したとき表示
+├── su.png    # 'su' を入力したとき表示
+├── ta.png    # 'ta' を入力したとき表示
+├── te.png    # 'te' を入力したとき表示
+├── to.png    # 'to' を入力したとき表示
+├── tsu.png   # 'tsu' または 'tu' を入力したとき表示
+├── u.png     # 'u' を入力したとき表示
+├── wa.png    # 'wa' を入力したとき表示
+├── wo.png    # 'wo' を入力したとき表示
+├── ya.png    # 'ya' を入力したとき表示
+├── yo.png    # 'yo' を入力したとき表示
+├── yu.png    # 'yu' を入力したとき表示
+├── za.png    # 'za' を入力したとき表示
+├── ze.png    # 'ze' を入力したとき表示
+├── zo.png    # 'zo' を入力したとき表示
+└── zu.png    # 'zu' を入力したとき表示
+```
 
 
 ## ゲーム画面説明
