@@ -337,7 +337,7 @@ int main() {
 
         // テスト弾の描画
         for (const auto& pb : previewBullets) {
-            DrawCircle((int)pb.x, (int)pb.y, 5, BLUE);
+            DrawCircle((int)pb.x, (int)pb.y, 5, RED);
         }
 
         // 右パネルの背景として、暗いグレー色の四角形とタイトルを描画する
