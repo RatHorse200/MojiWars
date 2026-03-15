@@ -136,6 +136,7 @@ Texture2D GetRedSpriteTexture(const std::string& romaji) {
         Texture2D empty = { 0 };
         return empty;
     }
+    // キャッシュにあればそのまま返し、なければロードして登録してから返す
     if (redSpriteTextures.find(romaji) == redSpriteTextures.end()) {
         redSpriteTextures[romaji] = LoadRedSprite(romaji);
     }
@@ -148,6 +149,7 @@ Texture2D GetBlackSpriteTexture(const std::string& romaji) {
         Texture2D empty = { 0 };
         return empty;
     }
+    // キャッシュにあればそのまま返し、なければロードして登録してから返す
     if (blackSpriteTextures.find(romaji) == blackSpriteTextures.end()) {
         blackSpriteTextures[romaji] = LoadBlackSprite(romaji);
     }
