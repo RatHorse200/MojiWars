@@ -111,7 +111,7 @@ static void SpawnKenTate(Enemy& e, EnemyType type, int cellSize, SpawnSide force
 }
 
 // 敵を生成するための情報を決めてenemiesに追加する関数
-void SpawnEnemy(int boardOffsetX, int boardOffsetY, int gridSize, int cellSize, int stage, int difficulty, SpawnSide forcedSide) {
+void SpawnEnemy(int cellSize, int stage, int difficulty, SpawnSide forcedSide) {
     // 難易度 １：かんたん　０：むずかしい
     // フォーマット：　ステージ〇： けんのスポーン確率/たてのスポーン確率/ゆみのスポーン確率
     // かんたん：  ステージ１: 60/20/20  ステージ２－３: 50/25/25  ステージ４－５: 40/30/30
@@ -294,7 +294,7 @@ void UpdateEnemies(float dt, int boardOffsetX, int boardOffsetY, int gridSize, i
                     if (e.hp <= 0) {
                         e.active = false;
                         // 撃破までの時間をAIに通知（適応型難易度用）
-                        NotifyEnemyKilled((float)GetTime() - e.spawnTime, gameDifficulty);
+                        NotifyEnemyKilled((float)GetTime() - e.spawnTime);
                     }
                     b.active = false;
                     break;

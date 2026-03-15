@@ -28,13 +28,13 @@ extern AIState aiState;
 void ResetAI();
 
 // AIの状態を毎フレーム更新する（ユーティリティスコアのみ）
-void UpdateAI(float dt, const GameBoard& board, int difficulty);
+void UpdateAI(const GameBoard& board);
 
 // 敵が撃破されたことをAIに通知し、適応型難易度を更新する
-void NotifyEnemyKilled(float ttk, int difficulty);
+void NotifyEnemyKilled(float ttk);
 
 // ユーティリティスコアを確率として使った重み付きランダムで、スポーン方向を決定する
 SpawnSide GetAISpawnSide();
 
 // スポーン間隔の倍率を返す
-float GetAISpawnIntervalMult(int difficulty);
+float GetAISpawnIntervalMult();

@@ -41,7 +41,7 @@ extern std::vector<Bullet> bullets;     // ゲーム本体とエディタで共�
 int AllocEnemyId();
 
 // 敵を生成するための情報を決めてenemiesに追加する関数
-void SpawnEnemy(int boardOffsetX, int boardOffsetY, int gridSize, int cellSize, int stage, int difficulty, SpawnSide forcedSide);
+void SpawnEnemy(int cellSize, int stage, int difficulty, SpawnSide forcedSide);
 
 // すべての敵と弾の移動、射撃、当たり判定、そして不要になった文字の削除をする更新処理関数
 void UpdateEnemies(float dt, int boardOffsetX, int boardOffsetY, int gridSize, int cellSize, int screenWidth, int screenHeight, GameBoard& board, bool dealFieldDamage = true);

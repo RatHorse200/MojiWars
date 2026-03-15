@@ -46,9 +46,7 @@ static float CalcDefense(const GameBoard& board, SpawnSide side) {
 }
 
 // AIの状態を毎フレーム更新する（ユーティリティスコアのみ）
-void UpdateAI(float dt, const GameBoard& board, int difficulty) {
-    (void)dt;
-    (void)difficulty;
+void UpdateAI(const GameBoard& board) {
     // ユーティリティスコアを計算：防御密度が低い方向ほど高いスコアになる
     // 最小値0.1を設けることで、満員でも選ばれる可能性をゼロにしない
     aiState.utilLeft   = std::max(0.1f, 1.0f - CalcDefense(board, SIDE_LEFT));
@@ -57,9 +55,7 @@ void UpdateAI(float dt, const GameBoard& board, int difficulty) {
 }
 
 // 敵が撃破されたことをAIに通知し、適応型難易度を更新する
-void NotifyEnemyKilled(float ttk, int difficulty) {
-    (void)difficulty;
-
+void NotifyEnemyKilled(float ttk) {
     // 直近で倒した数（TTK_WINDOW体）のTTKをローリングバッファで記録する
     aiState.recentTTKs[aiState.ttkIdx] = ttk;
     aiState.ttkIdx = (aiState.ttkIdx + 1) % TTK_WINDOW;
@@ -98,7 +94,6 @@ SpawnSide GetAISpawnSide() {
 }
 
 // スポーン間隔の倍率を返す
-float GetAISpawnIntervalMult(int difficulty) {
-    (void)difficulty;
+float GetAISpawnIntervalMult() {
     return aiState.spawnIntervalMult;
 }
