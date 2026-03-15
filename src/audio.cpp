@@ -32,7 +32,7 @@ void InitGameAudio() {
     seGameOver = LoadSound("assets/music/se_game_over.ogg");
     seFieldDamage = LoadSound("assets/music/se_field_damage.ogg");
     SetSoundVolume(sePlace, 2.0f);       // ひらがな配置音を大きくする
-    SetSoundVolume(seFieldDamage, 2.5f); // フィールドダメージ音を大きくする
+    SetSoundVolume(seFieldDamage, 1.5f); // フィールドダメージ音の音量
 }
 
 // ゲーム終了直前に読み込んでいたすべての音楽と効果音のデータをメモリから消去する関数
