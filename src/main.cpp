@@ -9,6 +9,7 @@
 #include "tutorial.h"
 #include "char_fire.h"
 #include "audio.h"
+#include "ai.h"
 
 // 画面遷移とメニューのホバー状態
 GameBoard gameBoard;
@@ -261,6 +262,7 @@ int main() {
                         stageStartPending       = true; // ステージ開始待ちフラグを立てる
                         gameBoard.Init();
                         ApplyDifficulty();
+                        ResetAI();
                         enemies.clear();
                         bullets.clear();
                         currentState = STATE_PLAYING;
@@ -303,6 +305,7 @@ int main() {
                                 stageStartPending = true;
                                 gameBoard.Init();
                                 ApplyDifficulty();
+                                ResetAI();
                                 enemies.clear();
                                 bullets.clear();
                             }
@@ -360,13 +363,14 @@ int main() {
                 {
                     int stageIdx = currentStage - 1;
                     int totalNeeded = stageEnemyCounts[stageIdx]; // このステージのノルマ数
-                    float interval = stageSpawnIntervals[stageIdx]; // 出現間隔
+                    // かんたんはAIの適応型難易度でスポーン間隔を変化させる
+                    float interval = stageSpawnIntervals[stageIdx] * GetAISpawnIntervalMult(gameDifficulty);
 
                     if (enemiesSpawnedThisStage < totalNeeded) {
                         spawnTimer += dt;
                         if (spawnTimer >= interval) {
                             spawnTimer = 0.0f;
-                            SpawnEnemy(boardOffsetX, boardOffsetY, GRID_SIZE, CELL_SIZE, currentStage, gameDifficulty);
+                            SpawnEnemy(boardOffsetX, boardOffsetY, GRID_SIZE, CELL_SIZE, currentStage, gameDifficulty, GetAISpawnSide());
                             enemiesSpawnedThisStage++;
                         }
                     } else if (enemies.empty()) {
@@ -380,6 +384,9 @@ int main() {
                         }
                     }
                 }
+
+                // AIの更新：ユーティリティスコアと適応型難易度を更新する
+                UpdateAI(dt, gameBoard, gameDifficulty);
 
                 // 全体の更新：敵の移動判定、味方文字からの弾発射
                 UpdateEnemies(dt, boardOffsetX, boardOffsetY, GRID_SIZE, CELL_SIZE, SCREEN_WIDTH, SCREEN_HEIGHT, gameBoard);
@@ -410,6 +417,7 @@ int main() {
                             stageStartPending = true;
                             gameBoard.Init();
                             ApplyDifficulty();
+                            ResetAI();
                             enemies.clear();
                             bullets.clear();
                             currentState = STATE_PLAYING;
@@ -425,6 +433,7 @@ int main() {
                             stageStartPending = true;
                             gameBoard.Init();
                             ApplyDifficulty();
+                            ResetAI();
                             enemies.clear();
                             bullets.clear();
                             currentState = STATE_PLAYING;

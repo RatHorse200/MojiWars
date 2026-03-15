@@ -14,7 +14,7 @@ LDFLAGS = -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 
 # ターゲット
 TARGET = bin/MojiWars_linux # ゲームの実行ファイル名
-SOURCES = $(SRCDIR)/main.cpp $(SRCDIR)/romaji.cpp $(SRCDIR)/sprites.cpp $(SRCDIR)/board.cpp $(SRCDIR)/enemy.cpp $(SRCDIR)/title.cpp $(SRCDIR)/tutorial.cpp $(SRCDIR)/char_fire.cpp $(SRCDIR)/audio.cpp # ゲームを構成する全ての.cppファイル
+SOURCES = $(SRCDIR)/main.cpp $(SRCDIR)/romaji.cpp $(SRCDIR)/sprites.cpp $(SRCDIR)/board.cpp $(SRCDIR)/enemy.cpp $(SRCDIR)/title.cpp $(SRCDIR)/tutorial.cpp $(SRCDIR)/char_fire.cpp $(SRCDIR)/audio.cpp $(SRCDIR)/ai.cpp # ゲームを構成する全ての.cppファイル
 
 # デフォルトターゲット
 all: $(TARGET) # 単にmakeと入力されたら、メインゲームを作る作業を始める

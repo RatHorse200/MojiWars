@@ -1,5 +1,6 @@
 // 敵キャラクターと弾の生成・移動・当たり判定・描画など、戦闘システム全般を管理するファイル
 #include "enemy.h"
+#include "ai.h"
 #include "sprites.h"
 #include "constants.h"
 #include "char_fire.h"
@@ -13,6 +14,8 @@ std::vector<Enemy> enemies;     // 全ての敵のデータ
 std::vector<Bullet> bullets;    // 全ての弾のデータ
 
 static int nextEnemyId = 1;     // 次に新しく生み出す敵のID
+
+extern int gameDifficulty;      // 難易度（main.cppで定義）
 
 int AllocEnemyId() { return nextEnemyId++; } // 敵のIDを新しく割り当てる関数
 
@@ -48,25 +51,23 @@ static const int YUMI_BOTTOM[][2] = {
 };
 static const int YUMI_BOTTOM_N = 11;
 
-// ゆみの敵情報とスポーン位置をランダムに決める関数
-static void SpawnYumi(Enemy& e, int cellSize) {
+// ゆみの敵情報とスポーン位置を決める関数（forcedSideでAIが指定した方向からスポーンする）
+static void SpawnYumi(Enemy& e, int cellSize, SpawnSide forcedSide) {
     e.type = ENEMY_YUMI;
     e.hp   = 6;     // 現在の体力
-    e.maxHp = 6;    // 最大体力 
+    e.maxHp = 6;    // 最大体力
     e.dx   = 0.0f;  // 移動しないので速度0
     e.dy   = 0.0f;  // 移動しないので速度0
     e.shootTimer = 0.0f;    // 弾を撃つまでの時間を計るタイマー
     e.fieldHitCount = 0;    // フィールドにダメージを与えた回数
 
-    // スポーン位置を決める
-    // 右方向からスポーンする確率40%、左方向からスポーンする確率30%、下方向からスポーンする確率30%とする
-    int roll = GetRandomValue(0, 9);
-    if (roll <= 3) {
+    // AIが指定した方向からスポーンする
+    if (forcedSide == SIDE_RIGHT) {
         int idx  = GetRandomValue(0, YUMI_RIGHT_N - 1);
         e.x = (float)(YUMI_RIGHT[idx][0] * cellSize);
         e.y = (float)(YUMI_RIGHT[idx][1] * cellSize);
         e.spawnSide = SIDE_RIGHT;
-    } else if (roll <= 6) {
+    } else if (forcedSide == SIDE_LEFT) {
         int idx  = GetRandomValue(0, YUMI_LEFT_N - 1);
         e.x = (float)(YUMI_LEFT[idx][0] * cellSize);
         e.y = (float)(YUMI_LEFT[idx][1] * cellSize);
@@ -79,24 +80,22 @@ static void SpawnYumi(Enemy& e, int cellSize) {
     }
 }
 
-//けんとたての敵情報とスポーン位置をランダムに決める関数
-static void SpawnKenTate(Enemy& e, EnemyType type, int cellSize) {
+// けんとたての敵情報とスポーン位置を決める関数（forcedSideでAIが指定した方向からスポーンする）
+static void SpawnKenTate(Enemy& e, EnemyType type, int cellSize, SpawnSide forcedSide) {
     e.type  = type;
     e.hp    = 16;   // 現在の体力
     e.maxHp = 16;   // 最大体力
     e.fieldHitCount = 0;    // フィールドにダメージを与えた回数
     float speed = (type == ENEMY_KEN) ? 0.25f * cellSize : 0.125f * cellSize; // けんは0.25倍、たては0.125倍の速度で移動する
 
-    // スポーン位置を決める
-    // 右方向からスポーンする確率40%、左方向からスポーンする確率30%、下方向からスポーンする確率30%とする
-    int roll = GetRandomValue(0, 9);
-    if (roll <= 3) {
+    // AIが指定した方向からスポーンする
+    if (forcedSide == SIDE_RIGHT) {
         e.spawnSide = SIDE_RIGHT;
         e.x  = (float)(17 * cellSize);
         e.y  = (float)(GetRandomValue(2, 6) * cellSize);
         e.dx = -speed;
         e.dy = 0.0f;
-    } else if (roll <= 6) {
+    } else if (forcedSide == SIDE_LEFT) {
         e.spawnSide = SIDE_LEFT;
         e.x  = (float)(1 * cellSize);
         e.y  = (float)(GetRandomValue(2, 6) * cellSize);
@@ -112,7 +111,7 @@ static void SpawnKenTate(Enemy& e, EnemyType type, int cellSize) {
 }
 
 // 敵を生成するための情報を決めてenemiesに追加する関数
-void SpawnEnemy(int boardOffsetX, int boardOffsetY, int gridSize, int cellSize, int stage, int difficulty) {
+void SpawnEnemy(int boardOffsetX, int boardOffsetY, int gridSize, int cellSize, int stage, int difficulty, SpawnSide forcedSide) {
     // 難易度 １：かんたん　０：むずかしい
     // フォーマット：　ステージ〇： けんのスポーン確率/たてのスポーン確率/ゆみのスポーン確率
     // かんたん：  ステージ１: 60/20/20  ステージ２－３: 50/25/25  ステージ４－５: 40/30/30
@@ -135,12 +134,13 @@ void SpawnEnemy(int boardOffsetX, int boardOffsetY, int gridSize, int cellSize, 
 
     Enemy e;    // すべての敵に共通する情報
     e.active = true; // true：生きている
-    e.hitFieldOnce = false; 
+    e.hitFieldOnce = false;
     e.shootTimer = 0.0f;
     e.id = nextEnemyId++;
+    e.spawnTime = (float)GetTime(); // スポーン時刻を記録（TTK計測用）
 
-    if (type == ENEMY_YUMI)  SpawnYumi(e, cellSize);
-    else                     SpawnKenTate(e, type, cellSize);
+    if (type == ENEMY_YUMI)  SpawnYumi(e, cellSize, forcedSide);
+    else                     SpawnKenTate(e, type, cellSize, forcedSide);
 
     enemies.push_back(e);
 }
@@ -291,7 +291,11 @@ void UpdateEnemies(float dt, int boardOffsetX, int boardOffsetY, int gridSize, i
                         if (frontHit) damage = 1;
                     }
                     e.hp -= damage;
-                    if (e.hp <= 0) e.active = false;
+                    if (e.hp <= 0) {
+                        e.active = false;
+                        // 撃破までの時間をAIに通知（適応型難易度用）
+                        NotifyEnemyKilled((float)GetTime() - e.spawnTime, gameDifficulty);
+                    }
                     b.active = false;
                     break;
                 }

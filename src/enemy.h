@@ -30,7 +30,8 @@ struct Enemy {
     SpawnSide spawnSide;// 敵がどの方向からスポーンしたか
     bool  hitFieldOnce; // 敵がフィールドの枠に接触してダメージを与え終わったかどうか
     int   id;           // この弾が誰の撃った弾かを識別するためのid
-    int   fieldHitCount;// このゆみが撃った弾が既に何回フィールドにダメージを与えているか 
+    int   fieldHitCount;// このゆみが撃った弾が既に何回フィールドにダメージを与えているか
+    float spawnTime;    // この敵がスポーンした時刻（適応型難易度のTTK計測用）
 };
 
 extern std::vector<Enemy> enemies;      // ゲーム本体とエディタで共有する敵の設定
@@ -40,7 +41,7 @@ extern std::vector<Bullet> bullets;     // ゲーム本体とエディタで共�
 int AllocEnemyId();
 
 // 敵を生成するための情報を決めてenemiesに追加する関数
-void SpawnEnemy(int boardOffsetX, int boardOffsetY, int gridSize, int cellSize, int stage, int difficulty);
+void SpawnEnemy(int boardOffsetX, int boardOffsetY, int gridSize, int cellSize, int stage, int difficulty, SpawnSide forcedSide);
 
 // すべての敵と弾の移動、射撃、当たり判定、そして不要になった文字の削除をする更新処理関数
 void UpdateEnemies(float dt, int boardOffsetX, int boardOffsetY, int gridSize, int cellSize, int screenWidth, int screenHeight, GameBoard& board, bool dealFieldDamage = true);
